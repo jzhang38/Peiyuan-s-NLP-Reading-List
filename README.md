@@ -37,7 +37,7 @@ asdasd
 + [RETRO](https://deepmind.com/research/publications/2021/improving-language-models-by-retrieving-from-trillions-of-tokens) <br>
 asdasd
 
-+ [WebGPT](https://arxiv.org/pdf/2112.09332.pdf <br>
++ [WebGPT](https://arxiv.org/pdf/2112.09332.pdf) <br>
 asdasd
 
 + [Generative Adversarial Transformers](https://arxiv.org/abs/2103.01209) <br>
