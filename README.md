@@ -5,25 +5,13 @@
 A place to keep track of the NLP papers I read.
 
 
-# Focus
 
-+ [Place Hodler]() <br>
-asdasd
 
-+ [Place Hodler]() <br>
-asdasd
-
-+ [Place Hodler]() <br>
-asdasd
-
-+ [Place Hodler]() <br>
-asdasd
 
 
 
 # Model and Pretraining
 
-+ **Second Time Reading Marker** 
 
 + [Transformer]() <br>
 1. Why scaled dot product: to keep the variance to be asd
@@ -57,7 +45,7 @@ LN variants after convergence
  3. During generation, it ramdomly pick tokens from the top-k result.
  
 + [GPT-3](https://arxiv.org/pdf/2005.14165.pdf) <br>
-asdasd
+
 + [DeBerta] ()<br>
 1. distangled attention
 2. enhanced mask decoder
@@ -72,7 +60,7 @@ asdasd
 5. Ideas from Transformer-XL: relative positional encoding;segment recurrence mechanism
 6. Training data: BooksCorpus, English Wiki, Giga5, ClueWeb 2012-B, Common Crawl.
 7. Tokenization: SentencePiece.
-+ **First Time Reading Marker**
+
 
 
 + [Transformer-XL](https://arxiv.org/pdf/1901.02860.pdf) <br>
@@ -85,75 +73,84 @@ asdasd
 1. Motivation: to explore efficient means of augmenting language models with a massive-scale memory without significantly increasing computations.
 
 + [WebGPT](https://arxiv.org/pdf/2112.09332.pdf) <br>
-asdasd
+
 
 
 + [Swin Transformer](https://arxiv.org/abs/2103.14030) <br>
 1. Promblem of ViT: 1.ViT has quadratic complexity w.r.t. token lengths, making it unsuitable for high resulution set up. 2. ViT is not suitable for dense vision task.
 2. Hierarchical Architechure, shifted window.
 + [TextStyleBrush]() <br>
-asdasd
+
 
 + [The Natural Language Decathlon:Multitask Learning as Question Answering](https://arxiv.org/pdf/1806.08730.pdf) <br>
-asdasd
 
-+ [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer]
 
-+ [GraphRel: Modeling Text as Relational Graphs for Joint Entity and Relation Extraction]
-+ [A Novel Cascade Binary Tagging Framework forRelational Triple Extraction] <br>
-1. Overlapping: a. EntityPairOverlap b.SingleEntityOverlap
-2. Motivation: Most existing approach treat relatiosn as discreate label to be assigned,which results in :a. label imbalance, b. confusion caused by EnitityPairOverlap. To takle 
-3. Treat relation as a function whose input is subject and object is object.
++ [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer]()
+
++ [Universal Transformer]()
+
++ [Performer]()
+
++ [Distilling Task-Specific Knowledge from BERT into Simple Neural Networks]()
+
++ [DistillBert]()
++ [FastBERT]()
+
 
 # Relation Extraction
-+ **Second Time Reading Marker** 
-+ **First Time Reading Marker**
+
 
 
 + [PRGC: Potential Relation and Global Correspondence Based Joint Relational Triple Extraction]() <br>
-asdasd
+
 
 + [Few-Shot Named Entity Recognition: A Comprehensive Study]() <br>
-asdasd
+
 
 + [Continual Learning for Named Entity Recognition]() <br>
-asdasd
+
++ [Template-Based Named Entity Recognition Using BART]()
+
++ [How Knowledge Graph and Attention Help]() <br>
+
+
++ [Potential Relation and Global Correspondence Based Joint Relational Triple Extraction - Yefeng Zheng]() <br>
+
++ [GraphRel: Modeling Text as Relational Graphs for Joint Entity and Relation Extraction]()
++ [A Novel Cascade Binary Tagging Framework forRelational Triple Extraction]() <br>
+1. Overlapping: a. EntityPairOverlap b.SingleEntityOverlap
+2. Motivation: Most existing approach treat relatiosn as discreate label to be assigned,which results in :a. label imbalance, b. confusion caused by EnitityPairOverlap. To takle 
+3. Treat relation as a function whose input is subject and object is object.
++ [Revisiting the Negative Data of Distantly Supervised Relation Extraction]() <br>
+
+
++ [SENT: Sentence-level Distant Relation Extraction via Negative Training]() <br>
+
++ [Document-Level Relation Extraction with Adaptive Thresholding and Localized Context Poolin]() <br>
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
 
-+ [Place Hodler]() <br>
-asdasd
 
 # Miscellaneous
 
 + [TextStypeBrush](https://arxiv.org/abs/2106.08385) <br>
-asdasd
+
 
 + [SentencePiece](https://arxiv.org/pdf/1808.06226.pdf) <br>
 1. SentencePiece, a simple and language independent text tokenizer and detokenizer mainly for Neural Network- based text generation systems.
 2. Problem with existing approach of detokenization: it is not reversly convertible. The detokenizer relies on rules to predict white spaces.
 
 + [WordPiece](https://arxiv.org/pdf/1609.08144.pdf) <br>
-asdasd
 
-+ [Place Hodler]() <br>
-asdasd
 
-+ [Place Hodler]() <br>
-asdasd
 
-+ [Place Hodler]() <br>
-asdasd
-
-+ [Place Hodler]() <br>
-asdasd
 
 # Summary
 
@@ -161,32 +158,32 @@ asdasd
 + **First Time Reading Marker**
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 
 + [Place Hodler]() <br>
-asdasd
+
 # Text Similarity
 + [A Survey on Dialogue Systems:Recent Advances and New Frontiers](https://arxiv.org/pdf/1711.01731.pdf) <br>
 
 
 # Machine Translation
 + [Learning Deep Transformer Mdoels for Machine Translation](https://arxiv.org/pdf/1906.01787.pdf)<br>
-asdasd
+
 + [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/pdf/1704.04368.pdf)<br>
-asdasd
+
 # Reinforcemet Learning 
