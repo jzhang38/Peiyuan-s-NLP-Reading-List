@@ -7,6 +7,10 @@ A place to keep track of the NLP papers I read.
 
 
 
+# Knowledge Point
+
++ Knowledge Base
+1.  An expert system requires structured data. Not just tables with numbers and strings, but pointers to other objects that in turn have additional pointers. The ideal representation for a knowledge base is an object model (often called an ontology in artificial intelligence literature) with classes, subclasses and instances.
 
 
 
@@ -87,19 +91,38 @@ LN variants after convergence
 
 + [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer]()
 
-+ [Universal Transformer]()
++ [Universal Transformer]() <br>
+0. Motivation: RNNs’ inductive bias towards learning iterative or recursive transformations is important.
+1. parallel-in-time recurrent self-attentive sequence model
+2. RNN in depth.
+3. applying a transition function (shared across position and time) to the outputs of the self-attention mechanism, independently at each position. 
+4. Add positional embedding with respect to time and position at each layer.
 
 + [Performer]()
 
 + [Distilling Task-Specific Knowledge from BERT into Simple Neural Networks]()
-
+1. To facilitate effective knowledge transfer, however,we often require a large, unlabeled dataset.The teacher model provides the probability logitsand estimated labels for these unannotated samples,and the student network learns from theteacher’s outputs.
+2. Use Mean Square Error as error function on the logits of teacher and student network.
+3. Design a way to augment the dataset during distillation: maskign, POS swappign, n-gram sampling.
 + [DistillBert]()
+1. Distill during pretraining. 40% smaller, 60% faster.
+2. Why distillaiton works: some of these "near-zero" probabilities are larger than others and reflect, in part, the generalization capabilities of the model and how well it will perform on the test set3
+3. DistilBERT is initialized from the teacher network.
 + [FastBERT]()
-
-
+1. speed-tunable FastBERT with adaptive inference time
+2. Pretrain backbone --> Finetune backbone and teacher classifier --> Bring in student classifier and perform distillation --> Adaptive inference 
 # Relation Extraction
 
++ [Distant supervision for relation extraction without labeled data 2009]()<br>
+1. 
 
+
++ [Distant Supervision for Relation Extraction with Sentence-Level Attention and Entity Descriptions]()<br>
+1. Motivation: a. Multi Instance Learning only choose the instance with highest probability in a mini-batch as the positive instance, which is sub-optimal becuase normally a relation may have many positive instnaces. b. Enity definition may serve as important improtation for relation extraction.
+2. Propose a sentence level attention model which assign different weights to valid and invalid instance in a bag.
++ [Distant Supervision for Relation Extraction with Piecewise Convolutional Neural Networks]()<br>
+1. Formulate Distant Supervision as multiple instance learning
+2. Use CNN and max pool piecewisely
 
 + [PRGC: Potential Relation and Global Correspondence Based Joint Relational Triple Extraction]() <br>
 
@@ -111,23 +134,23 @@ LN variants after convergence
 
 + [Template-Based Named Entity Recognition Using BART]()
 
-+ [How Knowledge Graph and Attention Help]() <br>
 
 
-+ [Potential Relation and Global Correspondence Based Joint Relational Triple Extraction - Yefeng Zheng]() <br>
+
 
 + [GraphRel: Modeling Text as Relational Graphs for Joint Entity and Relation Extraction]()
 + [A Novel Cascade Binary Tagging Framework forRelational Triple Extraction]() <br>
 1. Overlapping: a. EntityPairOverlap b.SingleEntityOverlap
 2. Motivation: Most existing approach treat relatiosn as discreate label to be assigned,which results in :a. label imbalance, b. confusion caused by EnitityPairOverlap. To takle 
 3. Treat relation as a function whose input is subject and object is object.
+
 + [Revisiting the Negative Data of Distantly Supervised Relation Extraction]() <br>
 
 
 + [SENT: Sentence-level Distant Relation Extraction via Negative Training]() <br>
 
 + [Document-Level Relation Extraction with Adaptive Thresholding and Localized Context Poolin]() <br>
-
+1. 
 
 + [Place Hodler]() <br>
 
