@@ -2,7 +2,7 @@
 
 
 
-A place to keep track of the NLP papers I read.
+A place to keep track of the NLP papers I read, starting from 2022 Jan.
 
 
 
@@ -113,12 +113,9 @@ LN variants after convergence
 2. Pretrain backbone --> Finetune backbone and teacher classifier --> Bring in student classifier and perform distillation --> Adaptive inference 
 # Relation Extraction
 
-+ [Distant supervision for relation extraction without labeled data 2009]()<br>
-1. 
-
 
 + [Distant Supervision for Relation Extraction with Sentence-Level Attention and Entity Descriptions]()<br>
-1. Motivation: a. Multi Instance Learning only choose the instance with highest probability in a mini-batch as the positive instance, which is sub-optimal becuase normally a relation may have many positive instnaces. b. Enity definition may serve as important improtation for relation extraction.
+1. Motivation: a. Multi Instance Learning only choose the instance with highest probability in a mini-batch as the positive instance, which is sub-optimal becuase normally a relation may have many positive instnaces. b. Enity definition may serve as important improtatant for relation extraction.
 2. Propose a sentence level attention model which assign different weights to valid and invalid instance in a bag.
 + [Distant Supervision for Relation Extraction with Piecewise Convolutional Neural Networks]()<br>
 1. Formulate Distant Supervision as multiple instance learning
@@ -131,7 +128,7 @@ LN variants after convergence
 
 
 + [Continual Learning for Named Entity Recognition]() <br>
-
+1. Motivation: real world application often needs to add new entity type to NER system, while we can not afford to re-train the whole model.
 + [Template-Based Named Entity Recognition Using BART]()
 
 
@@ -139,7 +136,7 @@ LN variants after convergence
 
 
 + [GraphRel: Modeling Text as Relational Graphs for Joint Entity and Relation Extraction]()
-+ [A Novel Cascade Binary Tagging Framework forRelational Triple Extraction]() <br>
++ [A Novel Cascade Binary Tagging Framework for Relational Triple Extraction]() <br>
 1. Overlapping: a. EntityPairOverlap b.SingleEntityOverlap
 2. Motivation: Most existing approach treat relatiosn as discreate label to be assigned,which results in :a. label imbalance, b. confusion caused by EnitityPairOverlap. To takle 
 3. Treat relation as a function whose input is subject and object is object.
@@ -149,16 +146,27 @@ LN variants after convergence
 
 + [SENT: Sentence-level Distant Relation Extraction via Negative Training]() <br>
 
-+ [Document-Level Relation Extraction with Adaptive Thresholding and Localized Context Poolin]() <br>
-1. 
++ [Document-Level Relation Extraction with Adaptive Thresholding and Localized Context Pooling]() <br>
+1. Difficulty of Document-level RE: a. Multi Entity: One document commonly contains multiple entity pairs:  it requires the RE model to identify and focus on the part of the document with relevant context for a particular entity pair. b. Multi Label: one entity pair occurs multiple times in the document associated with multiple possible relations.
+2. Adaptive Treshholding: Create a new threshholding class to learn the adaptive threshholding during training. Design two loss functions to train ths newly added class.
+3. Localized Context Pooling: multiply the last layer attention acore of subject and object to obtain a attention score showing the relavant tokens for both entities, aggregate each token's representation using this score and feed it to classifier. 
 
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
+# Low Resorce RE
++ [Matching the Blanks: Distributional Similarity for Relation Learning]() <br>
+1. Entity Markers: An way to represent the input and output of BERT-like models for RE.
+2. Matching the Blanks: a pretraining strategey. Unlike distant supervised learning, MTB treat two sentence with the same entity pairs as the same relation in pretraining. It does not require any human annotation or external Kowledge Base. It only requires a entity extraction tool to extract and link entity. To disable the model from learning superficial clue from entity mention, the mask the entity span with a probability of 0.3
++ [Learning from Context or Names? An Empirical Study on Neural Relation Extraction]() <br>
+1. Motivation: which type of information RE models actually grasp to help them extract correct relations: textual context or entity mentions (names): Both context and entity mentions are crucial for RE. As shown in our experiments, while context is the main source to support classification, entity mentions also provide critical information, most of which is the type information of entities
+2. Existing RE benchmarks may leak shallow cues via entity mentions, which contribute to the high performance of existing models: we should enhance them via better understanding context and utilizing entity types, while preventing them from simply memorizing entities or exploiting biased cues in mentions.
+3. Contribution: investigate an entity-masked contrastive pre-training framework for RE.
+4. Unlike MTB, this paper still use Knowledge graph and treat two entity pairs with the same relaiton as the same relation during pretraining, instead if looking at the entity mention. The author argue that this helps the model to learn entity type information.
++ [MapRE: An Effective Semantic Mapping Approach for Low-resource Relation Extraction]() <br>
+1. both label-agnostic and label-aware
+2. Three stage: pretraining on Wiki, finetuning, tesing.
+3. In pretraining stage, three loss: CE betweenn sentence embedding, CE between sentence embedding and relation embedding, mask language modeling.
+4. In supervised findtuning, relation embedding * sentence embedding, cross entropy loss.
+5. In few shot finetuning, use meta learning (mimic K way N shot). relation embedding * query_sentence_embedding + query_sentence_embedding * support_sentence_embedding.
+6. Does 
 
 
 # Miscellaneous
@@ -180,26 +188,6 @@ LN variants after convergence
 + **Second Time Reading Marker** 
 + **First Time Reading Marker**
 
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
-
-+ [Place Hodler]() <br>
-
 # Text Similarity
 + [A Survey on Dialogue Systems:Recent Advances and New Frontiers](https://arxiv.org/pdf/1711.01731.pdf) <br>
 
@@ -208,5 +196,44 @@ LN variants after convergence
 + [Learning Deep Transformer Mdoels for Machine Translation](https://arxiv.org/pdf/1906.01787.pdf)<br>
 
 + [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/pdf/1704.04368.pdf)<br>
+
+
+# Computer Vision --  Gait Recognnintion 
+
+
++ [GaitSet: Regarding Gait as a Set for Cross-View Gait Recognition]()<br>
+1. As a periodic motion, gait can be represented as a single period. Within one period, it was observed that the silhouette in each position has unique appearance. Thus, the author assume the appearance of a silhouette has contained its position information.
+2. Input: a set a gait silhouettes --> use CNN to extract frame level features --> Set pooling to obtain set level features --> Horizontal Pyramid Mapping
+3. each perid will finally generate a 15872 dimensional representation to represent this person. During testing, Elidean distance will be calculated and the rank 1 result will be the output. 
+
++ [Gait Lateral Network: Learning Discriminative and Compact Representations for Gait Recognition]() <br>
+1. We notice that the silhouettes for different subjects only have subtle differences in many cases, which makes it vital to explore the shallow features encoding the local spatial structural information for gait recognition.
+2. learn a compact and discriminative representation for each subject.
+
+
++ [Gait Recognition via Effective Global-Local Feature Representation and Local Temporal Aggregation]() <br>
+1. Motivation: However, the representations based on global information often neglect the details of the gait frame, while local region based descriptors cannot capture the relations among neighboring regions, thus reduc- ing their discriminativenes
+2. Global and Local Feature Extractor(GLFE): composed of multiple Global and Local Convolutional layers (GLConv)
+3.  Local Temporal Aggregation (LTA) 
+4. Use both Triplet Loss and Cross Entropy Loss
++ [In defense of the triplet loss for person re-identification]() <br>
+
+# Computer Vision --  Person Re-Identification
+Person ReID basically has the same objective as Gait Recognition. The only difference is that the model input for ReID is a image, while for Gait Recognition it is a video.
++ [Horizontal pyramid matching for person re-identification]()<br>
+1. Motivation: missing body part may greatly influennce the model performance for model exploitinng global representation.
+2. Use Cross-Entropy Loss.
+
++ [A Discriminatively Learned CNN Embedding for Person Re-identification]() <br>
+1. Verification model: take a pair of images as imput and formuate the task as a binary classification. Use triplet loss. Drawbacks: they only use weak re-ID labels, and do not take all the annotated information into consideration. Therefore, the verification network lacks the consideration of the relationship between the image pairs and other images in the dataset.
+2. Identification model: formulate the task as multi-class classification. Drawbacks: During testing, the feature is extracted from a fully connected layer and then normalized. The similarity of two images is thus computed by the Euclidean distance between their normalized CNN embed- dings. The major drawback of the identification model is that the training objective is different from the testing procedure, i.e.,it does not account for the similarity measurement between image pairs, which can be problematic during the pedestrian retrieval process.
+3. We find that the contrastive loss leads to over-fitting when the number of images is limited.
+
+# Ideas
+1. There is a gap between training loss and tesing. Instead, we can always choose a sample as probe during training and calculate cross entropy loss.
+GaitGL without crossEntropyLoss 
+2. Pretrain out Gait Recognition model of Person ReID dataset. 
+3. Contrastive Learning with data augmentation
+4. Ramdom Sample a fixed length 的影响
 
 # Reinforcemet Learning 
