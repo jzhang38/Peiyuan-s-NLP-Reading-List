@@ -32,9 +32,11 @@ self-loop) where each input is a node in the graph.
 5. Although Post-LN often results in unstable training and divergence, it usually outperforms pre-
 LN variants after convergence
 6. Universal Transformer (UT): a recurrence-over-depth mechanism
-+ [Self-Attention with Relative Position Representations] <br>
+
++ [Self-Attention with Relative Position Representations]()<br>
 1. clipping distance k: for distrance beyond k, we simply use k as the distrance in relation posiitonal encoding.
 2. Insert positional encoding to value and key. 
+
 + [GPT-1](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) <br>
  1. Left to right LM. Use the last token's final hidden layer to perform classification
  2. Add LM loss during finetuning to speed up convergence and increase performance: Overall, the trend suggests that larger datasets benefit from the auxiliary objective but smaller datasets do not
@@ -59,7 +61,7 @@ LN variants after convergence
 1.  BERT limitation: fail to capture depedency between mask (independence assumption between predicted tokens); pretraining-finetuning discrepency
 2. Auto Regressive limitation: many downstread tasks need bidirectinal information.
 3. Permutation Language Modeling: a. only permute the factorization order (modify attention mask), not sequence order (position encoding remains the same)
-4. target position aware: a. Motivation: since it permuate the faxtorization order, the model do not know the next token position during inference. b. two stream attention: context stream and query stream
+4. target position aware: a. Motivation: since it permuate the factorization order, the model do not know the next token position during inference. b. two stream attention: context stream and query stream
 5. Training: partial prediction, only predict the last few tokens
 5. Ideas from Transformer-XL: relative positional encoding;segment recurrence mechanism
 6. Training data: BooksCorpus, English Wiki, Giga5, ClueWeb 2012-B, Common Crawl.
@@ -69,27 +71,21 @@ LN variants after convergence
 
 + [Transformer-XL](https://arxiv.org/pdf/1901.02860.pdf) <br>
 0. Motivation: a. Context fragmentation: the fixed-length segments are created by selecting a consecutive chunk of symbols without respecting the sentence or any other semantic boundary. Hence, the model lacks necessary contextual information needed to well predict the first few symbols. b. in traditional mothods, transformer model only generate one token for each forward pass, which is very time comsuming.
-1. Segment Level Recurrence with State Reuse: even thought gradient does not flow.
+1. Segment Level Recurrence with State Reuse: even though gradient does not flow.
 2. Relative position encoding: a. inject informaiton into attention score istead of the initial token representation. b. adapt sinusoid formulation. 
 3. Use Transformer decoder
 
 + [RETRO](https://deepmind.com/research/publications/2021/improving-language-models-by-retrieving-from-trillions-of-tokens) <br>
 1. Motivation: to explore efficient means of augmenting language models with a massive-scale memory without significantly increasing computations.
 
-+ [WebGPT](https://arxiv.org/pdf/2112.09332.pdf) <br>
+
 
 
 
 + [Swin Transformer](https://arxiv.org/abs/2103.14030) <br>
 1. Promblem of ViT: 1.ViT has quadratic complexity w.r.t. token lengths, making it unsuitable for high resulution set up. 2. ViT is not suitable for dense vision task.
 2. Hierarchical Architechure, shifted window.
-+ [TextStyleBrush]() <br>
 
-
-+ [The Natural Language Decathlon:Multitask Learning as Question Answering](https://arxiv.org/pdf/1806.08730.pdf) <br>
-
-
-+ [ERNIE-Doc: A Retrospective Long-Document Modeling Transformer]()
 
 + [Universal Transformer]() <br>
 0. Motivation: RNNs’ inductive bias towards learning iterative or recursive transformations is important.
@@ -104,13 +100,29 @@ LN variants after convergence
 1. To facilitate effective knowledge transfer, however,we often require a large, unlabeled dataset.The teacher model provides the probability logitsand estimated labels for these unannotated samples,and the student network learns from theteacher’s outputs.
 2. Use Mean Square Error as error function on the logits of teacher and student network.
 3. Design a way to augment the dataset during distillation: maskign, POS swappign, n-gram sampling.
+4. The student network is a single layer Bi-LSTM, but it can achieves performance on par with ELMO.
+
 + [DistillBert]()
 1. Distill during pretraining. 40% smaller, 60% faster.
 2. Why distillaiton works: some of these "near-zero" probabilities are larger than others and reflect, in part, the generalization capabilities of the model and how well it will perform on the test set3
 3. DistilBERT is initialized from the teacher network.
+
+
 + [FastBERT]()
 1. speed-tunable FastBERT with adaptive inference time
 2. Pretrain backbone --> Finetune backbone and teacher classifier --> Bring in student classifier and perform distillation --> Adaptive inference 
+
++ [Bootstrap your own latent: A new approach to self-supervised learning]()<br>
+
+
+
++ [data2vec: A General Framework for Self-supervised Learning in Speech, Vision and Language]() <br>
+
++ [wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations]() <br>
+
++ [BEIT: BERT Pre-Training of Image Transformers]()<br>
+
+
 # Relation Extraction
 
 
@@ -128,7 +140,7 @@ LN variants after convergence
 
 
 + [Continual Learning for Named Entity Recognition]() <br>
-1. Motivation: real world application often needs to add new entity type to NER system, while we can not afford to re-train the whole model.
+1. Motivation: real world application often needs to add new entity type to NER system, while we can not afford to retrain the whole model.
 + [Template-Based Named Entity Recognition Using BART]()
 
 
@@ -152,6 +164,9 @@ LN variants after convergence
 3. Localized Context Pooling: multiply the last layer attention acore of subject and object to obtain a attention score showing the relavant tokens for both entities, aggregate each token's representation using this score and feed it to classifier. 
 
 # Low Resorce RE
+
++ [Prototypical Networks for Few-shot Learning]() <br>
+1. 
 + [Matching the Blanks: Distributional Similarity for Relation Learning]() <br>
 1. Entity Markers: An way to represent the input and output of BERT-like models for RE.
 2. Matching the Blanks: a pretraining strategey. Unlike distant supervised learning, MTB treat two sentence with the same entity pairs as the same relation in pretraining. It does not require any human annotation or external Kowledge Base. It only requires a entity extraction tool to extract and link entity. To disable the model from learning superficial clue from entity mention, the mask the entity span with a probability of 0.3
@@ -167,6 +182,54 @@ LN variants after convergence
 4. In supervised findtuning, relation embedding * sentence embedding, cross entropy loss.
 5. In few shot finetuning, use meta learning (mimic K way N shot). relation embedding * query_sentence_embedding + query_sentence_embedding * support_sentence_embedding.
 6. Does 
+
++ [Exploring Task Difficulty for Few-Shot Relation Extraction]()<br>
+
++ [FewRel: A Large-Scale Supervised Few-Shot Relation Classification Dataset with State-of-the-Art Evaluation]() <>
+1. A dataset adapted from Wikipedia. First use distant supervised learning. Then ask crowdworkers to filter out no relation sentence.
++ [Learning Logic Rules for Document-level Relation Extraction]()
++[A Simple, Strong and Robust Baseline for Distantly Supervised Relation Extraction]()
++ [Separating Retention from Extraction in the Evaluation of End-to-end Relation Extraction]()
++[A Novel Global Feature-Oriented Relational Triple Extraction Model based on Table Filling]()
++[Gradient Imitation Reinforcement Learning for Low Resource Relation Extraction]()
++[Modular Self-Supervision for Document-Level Relation Extraction]()
+
++[Knowing False Negatives: An Adversarial Training Method for Distantly Supervised Relation Extraction]()
+
+
+
+
+# Named Entity Recognition
++[Template-Based Named Entity Recognition Using BART]()
+1. decoder output/input: template
+2. Given a sentence, how do they rank different templates from different class: use probability
++ [A Span-Based Model for Joint Overlapped and Discontinuous Named Entity Recognition]()
+1. Why people still use graph convulutional networks ?
+
++ [TriggerNER: Learning with Entity Triggers as Explanations for Named Entity Recognition]()
++[AutoTriggER- Named Entity Recognition with Auxiliary Trigger Extraction]()
+
++[Continual Learning for Named Entity Recognition]()
+
++[Data Augmentation for Cross-Domain Named Entity Recognition]()
+
+
++[De-biasing Distantly Supervised Named Entity Recognition via Causal Intervention]()
+
+
++[Denoising Distantly Supervised Named Entity Recognition via a Hypergeometric Probabilistic Model]()
+
+
++[Distantly-Supervised Named Entity Recognition with Noise-Robust Learning and Language Model Augmented Self-Training ]()
++[Few-Shot Named Entity Recognition- A Comprehensive Study]()
+
++[MECT- Multi-Metadata Embedding based Cross-Transformer for Chinese Named Entity Recognition]()
+
++[Named Entity Recognition with Small Strongly Labeled and Large Weakly Labeled Data]()
+
+
+
++[Self-training with Noisy Student improves ImageNet classification]()
 
 
 # Miscellaneous
@@ -218,12 +281,32 @@ LN variants after convergence
 4. Use both Triplet Loss and Cross Entropy Loss
 + [In defense of the triplet loss for person re-identification]() <br>
 
++ [RealGait: Gait Recognition for Person Re-Identification]() <br>
+1. The difference between ReID and Gait recognition
+2. Current popular datasets have major drawbacks: they are collected in indoor environment where the subjects are INSTRUCTED to walk instead of walking freely.
+3. The author convert an existing ReID into a Gait Recognition dataset by extracting silhouettes.
+4. SOTA model on CASIA-B such as GaitGL and GaitSet have poor performance in the wild.
+
++[Learning Rich Features for Gait Recognition by Integrating Skeletons and Silhouettes]() <br>
+
++ [RFMask: A Simple Baseline for Human Silhouette Segmentation with Radio Signals]()<br>
+
++ [End-to- end model-based gait recognition]()<br>
+
++ [Multi-Camera Trajectory Forecasting: Pedestrian Trajectory Prediction in a Network of Cameras]()<br>
+1. Multi-Camera Trajectory Forecasting
+2. Tracking objects (pedestrians) across a large camera net- work requires simultaneously running state-of-the-art algo- rithms for object detection, tracking, and RE-ID.  A successful MCTF model can address this issue by preempting the location of an object-of-interest in a distributed camera network, thereby enabling the system to monitor only selected cameras intelligently. 
+
++ [ Simple online and realtime tracking with a deep association metric]()<br>
+
++ [Chained-Tracker: Chaining Paired Attentive Regression Results for End-to-End Joint Multiple-Object Detection and Tracking]()<br>
+
 # Computer Vision --  Person Re-Identification
 Person ReID basically has the same objective as Gait Recognition. The only difference is that the model input for ReID is a image, while for Gait Recognition it is a video.
 + [Horizontal pyramid matching for person re-identification]()<br>
 1. Motivation: missing body part may greatly influennce the model performance for model exploitinng global representation.
 2. Use Cross-Entropy Loss.
-
++ [Performance Measures and a Data Set for Multi-Target, Multi-Camera Tracking]
 + [A Discriminatively Learned CNN Embedding for Person Re-identification]() <br>
 1. Verification model: take a pair of images as imput and formuate the task as a binary classification. Use triplet loss. Drawbacks: they only use weak re-ID labels, and do not take all the annotated information into consideration. Therefore, the verification network lacks the consideration of the relationship between the image pairs and other images in the dataset.
 2. Identification model: formulate the task as multi-class classification. Drawbacks: During testing, the feature is extracted from a fully connected layer and then normalized. The similarity of two images is thus computed by the Euclidean distance between their normalized CNN embed- dings. The major drawback of the identification model is that the training objective is different from the testing procedure, i.e.,it does not account for the similarity measurement between image pairs, which can be problematic during the pedestrian retrieval process.
@@ -235,5 +318,6 @@ GaitGL without crossEntropyLoss
 2. Pretrain out Gait Recognition model of Person ReID dataset. 
 3. Contrastive Learning with data augmentation
 4. Ramdom Sample a fixed length 的影响
-
+5. Few shot learnin: train a small model to change the last few layer's parameter? 
+6. Use existing large scale video dataset such as dataset for activity detection. -- > do human annotation. --> this is only single view
 # Reinforcemet Learning 
