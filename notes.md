@@ -1,4 +1,4 @@
-<h1 align="center">Peiyuan's Reading List</h1>
+S<h1 align="center">Peiyuan's Reading List</h1>
 
 
 
@@ -188,21 +188,40 @@ LN variants after convergence
 + [FewRel: A Large-Scale Supervised Few-Shot Relation Classification Dataset with State-of-the-Art Evaluation]() <>
 1. A dataset adapted from Wikipedia. First use distant supervised learning. Then ask crowdworkers to filter out no relation sentence.
 + [Learning Logic Rules for Document-level Relation Extraction]()
-+[A Simple, Strong and Robust Baseline for Distantly Supervised Relation Extraction]()
++ [A Simple, Strong and Robust Baseline for Distantly Supervised Relation Extraction]()
 + [Separating Retention from Extraction in the Evaluation of End-to-end Relation Extraction]()
-+[A Novel Global Feature-Oriented Relational Triple Extraction Model based on Table Filling]()
++ [A Novel Global Feature-Oriented Relational Triple Extraction Model based on Table Filling]()
 +[Gradient Imitation Reinforcement Learning for Low Resource Relation Extraction]()
-+[Modular Self-Supervision for Document-Level Relation Extraction]()
 
-+[Knowing False Negatives: An Adversarial Training Method for Distantly Supervised Relation Extraction]()
++ [Modular Self-Supervision for Document-Level Relation Extraction]()
+1. Not finished, plz read again
++ [Knowing False Negatives: An Adversarial Training Method for Distantly Supervised Relation Extraction]()
+1. STAGE I:Train a binary classifier to classify NA and sentence with relation. Filter out sentences that the model is not very confident about whether it is NA or not as possible False Negative.
+2. STAGE II: use bag representation (weighted sum with selective attention). Use adversatiral training (generator and discriminartor) to align the representation of possible false negative with positive examples.
++ [Modeling Relations and Their Mentions without Labeled Text] ()<>
++ [Multi-instance Multi-label Learning for Relation Extraction]()<>
++ [CIL: Con- trastive instance learning framework for distantly su- pervised relation extraction]() <>
+# Intent Detection
 
-
-
++ [Few-Shot Intent Detection via Contrastive Pre-Training and Fine-Tuning]() 
+1. Contrastive Pretraining: randomly mask 10 tokens to form positive pairs.
+2. Fine tuning: contrastive learning where positive piar are from the same class. Soft-max head.
++ [Prototypical Networks for Few-shot Learning]() <>
+1. Classics
++ [Dialoglue: A natural language understand- ing benchmark for task-oriented dialogue]() <>
+1. Just a benchmark, nothing special .
++ [Discriminative Nearest Neighbor Few-Shot Intent Detection by Transferring Natural Language Inference]()<>
+1. Use NLI pretrained model for intent detection. Input 2 sentence  and output binary score. Not worth reading.
+2. Backbone: Roberta + NLI
++ [Example-Driven Intent Prediction with Observers]() <>
+1. Use observer (like a marker)
+2. Use contrastive loss and KNN (like meta learning)
+3. Transfer from dataset in different domain also show good result.
+4. Backbone: CONVBERT
 
 # Named Entity Recognition
 +[Template-Based Named Entity Recognition Using BART]()
-1. decoder output/input: template
-2. Given a sentence, how do they rank different templates from different class: use probability
+1. Among the papers I read, this has got my attention and is of great quality from my perspective. It uses a template-based seq2seq model to perform NER task. Template based in a way that it designs template to convert each entity class in to a natural language. seq2seq in a way that it uses BART as the backbone, with the context sentence as input and template based natural language as output. Given a context sentence and a template based natural language, it calculates the probability for BART to output such a template based netural language. It iterates through all possible class and rank them by probabilty. The class with highest probability will be the final output. So the setup of this paper is quite different from those seq2seq in previous work where BART is to SAMPLE the corresponding labels. 
 + [A Span-Based Model for Joint Overlapped and Discontinuous Named Entity Recognition]()
 1. Why people still use graph convulutional networks ?
 
@@ -281,13 +300,15 @@ LN variants after convergence
 4. Use both Triplet Loss and Cross Entropy Loss
 + [In defense of the triplet loss for person re-identification]() <br>
 
+
+
 + [RealGait: Gait Recognition for Person Re-Identification]() <br>
 1. The difference between ReID and Gait recognition
 2. Current popular datasets have major drawbacks: they are collected in indoor environment where the subjects are INSTRUCTED to walk instead of walking freely.
 3. The author convert an existing ReID into a Gait Recognition dataset by extracting silhouettes.
 4. SOTA model on CASIA-B such as GaitGL and GaitSet have poor performance in the wild.
 
-+[Learning Rich Features for Gait Recognition by Integrating Skeletons and Silhouettes]() <br>
++ [Learning Rich Features for Gait Recognition by Integrating Skeletons and Silhouettes]() <br>
 
 + [RFMask: A Simple Baseline for Human Silhouette Segmentation with Radio Signals]()<br>
 
@@ -299,8 +320,17 @@ LN variants after convergence
 
 + [ Simple online and realtime tracking with a deep association metric]()<br>
 
-+ [Chained-Tracker: Chaining Paired Attentive Regression Results for End-to-End Joint Multiple-Object Detection and Tracking]()<br>
 
++ [Chained-Tracker: Chaining Paired Attentive Regression Results for End-to-End Joint Multiple-Object Detection and Tracking]()<br>
++ [Mask R-CNN]() <br>
++ [Faster R-CNN]()<br>
++ [Fast R-CNN]()<br>
++ [Masked-attention Mask Transformer for Universal Image Segmentation]()<br>
++[MaskFormer: Per-Pixel Classification is Not All You Need for Semantic Segmentation]()<>
++ [Fully convolutional networks for semantic segmentation.]() <brCap@2022>
++[Mask2Former for Video Instance Segmentation]() <br>
+
++ [Gait Recognition via Disentangled Representation Learning]()<br>
 # Computer Vision --  Person Re-Identification
 Person ReID basically has the same objective as Gait Recognition. The only difference is that the model input for ReID is a image, while for Gait Recognition it is a video.
 + [Horizontal pyramid matching for person re-identification]()<br>
